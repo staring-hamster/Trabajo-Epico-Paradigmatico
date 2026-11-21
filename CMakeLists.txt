@@ -14,6 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # Ademas de declarar los archivos a .cpp al Linker.
 add_executable(tareador 
         src/main.cpp
+        src/tarea.cpp
 )
 
 # Declaramos la carpeta de los archivos de encabezado, tambien para el Linker :)
