@@ -4,8 +4,7 @@
 
 #include "tarea.hpp"
 
-// Constructor
-
+// Constructor de la clase Tarea, que recibe el nombre, la descripcion y el estado de la tarea, y los asigna a los atributos de la clase.
 Tarea::Tarea(string nombre, string descripcion, bool estado)
 {
     this->nombre = nombre;
@@ -29,6 +28,8 @@ bool Tarea::getEstado()
 {
     return estado;
 }
+
+// Setter
 
 void Tarea::setEstado(bool estado)
 {

@@ -32,6 +32,8 @@ class Tarea {
         string getNombre();
         string getDescripcion();
 
+        // Estado es el unico atributo que puede ser modificado, por eso tiene un setter.
+
         bool getEstado();
         void setEstado(bool estado);
 
