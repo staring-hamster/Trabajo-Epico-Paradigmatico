@@ -5,6 +5,7 @@
 #include "tarea.hpp"
 
 // Constructor
+
 Tarea::Tarea(string nombre, string descripcion, bool estado)
 {
     this->nombre = nombre;
@@ -13,6 +14,7 @@ Tarea::Tarea(string nombre, string descripcion, bool estado)
 }
 
 // Getters
+
 string Tarea::getNombre()
 {
     return nombre;
@@ -26,4 +28,9 @@ string Tarea::getDescripcion()
 bool Tarea::getEstado()
 {
     return estado;
+}
+
+void Tarea::setEstado(bool estado)
+{
+    this->estado = estado;
 }

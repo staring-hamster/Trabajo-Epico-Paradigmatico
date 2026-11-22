@@ -4,8 +4,7 @@
 */
 #pragma once
 
-// Headers estand
-#include <iostream>
+// Headers estandar
 #include <string>
 
 using namespace std;
@@ -25,11 +24,15 @@ class Tarea {
 
     public:
         // Declaracion del constructor
+
         Tarea(string nombre, string descripcion, bool estado);
 
         // Declaracion de getters, para mantener la encapsulacion
+        
         string getNombre();
         string getDescripcion();
+
         bool getEstado();
+        void setEstado(bool estado);
 
 };

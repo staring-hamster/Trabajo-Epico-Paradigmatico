@@ -6,8 +6,8 @@ cmake_minimum_required(VERSION 3.10.0)
 # El nombre del proyecto
 project(Administrador-Tareas)
 
-# Establecemos un estandar de C++ (en este caso C++ 17 esta perfecto)
-set(CMAKE_CXX_STANDARD 17)
+# Establecemos un estandar de C++ (en este caso C++ 23 esta perfecto, viva C++ moderno :D )
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Aqui se pone el nombre del ejecutable que va a ser compilado,
