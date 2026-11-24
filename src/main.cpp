@@ -12,20 +12,32 @@
 // Usamos el espacio de nombres std, para no tener que escribir std:: antes de cada funcion o clase de la libreria estandar.
 using namespace std;
 
+int leerEntero(){
+    string entrada;
+    getline(cin, entrada);
+
+    try {
+        return stoi(entrada);
+    } catch (...) {
+        return -1;
+    }
+}
+
 // Esta funcion agrega una tarea a la lista de tareas, pidiendo al usuario el nombre y la descripcion de la tarea.
 void agregarTarea(vector<Tarea> &listaTareas){
     string nombre;
     string descripcion;
 
     // Le pedimos al usuario que ingrese el nombre y la descripcion de la tarea, y los guardamos en las variables correspondientes.
-    println("\nIngrese el nombre de la tarea: ");
-    cin >> nombre;
-    println("\nIngrese la descripcion de la tarea: ");
-    cin >> descripcion;
+    println(cout,"\nIngrese el nombre de la tarea: ");
+    getline(cin, nombre);
+
+    println(cout, "\nIngrese la descripcion de la tarea: ");
+    getline(cin, descripcion);
     
     // Comprobamos que el nombre y la descripcion no esten vacios, si lo estan, no se agrega la tarea a la lista.
     if (nombre.empty() || descripcion.empty()){
-        println("\nNo se puede tener un nombre o descripcion vacios.");
+        println(cout,"\nNo se puede tener un nombre o descripcion vacios.");
         return;
     }
 
@@ -46,6 +58,7 @@ void imprimirTareas(vector<Tarea> &listaTareas){
 
         // Imprimimos la informacion de la tarea, usando el metodo println de la libreria print, que nos permite imprimir de manera formateada.
         println(
+            cout,
             "\n{}. Nombre: {} \nDescripcion: {} \nEstado: {}\n", 
             to_string(i + 1), 
             nombreTarea, 
@@ -59,19 +72,17 @@ void imprimirTareas(vector<Tarea> &listaTareas){
 void cambiarEstadoTarea(vector<Tarea> &listaTareas){
     println("\nQue tarea desea cambiar?");
 
-    int eleccionTarea;
-    cin >> eleccionTarea;
+    int eleccionTarea = leerEntero();
 
     // Comprobamos que la tarea elegida exista, si no existe, mostramos un mensaje de error y salimos de la funcion.
-    if (eleccionTarea > listaTareas.size() || eleccionTarea < 0){
-        println("\nSe ha escogido una tarea no existente.");
+    if (eleccionTarea > listaTareas.size() || eleccionTarea <= 0){
+        println("\nSe escogio una tarea invalida o no existen tareas.");
         return;
     }
 
     println("\n1. Terminada \n2. Pendiente");
 
-    int eleccionEstado;
-    cin >> eleccionEstado;
+    int eleccionEstado = leerEntero();
 
     // Comprobamos que el estado elegido sea valido, si no es valido, mostramos un mensaje de error y salimos de la funcion.
     if (eleccionEstado != 1 && eleccionEstado != 2){
@@ -97,11 +108,10 @@ int main(){
     bool ejecutando = true;
 
     // Usamos un bucle do-while para mostrar el menu de opciones al usuario, y ejecutar la opcion elegida, hasta que el usuario decida salir del programa.
-    do {
-        println("\n---- GESTOR DE TAREAS 3000 ----\n1. Agregar una tarea\n2. Listar tareas\n3. Cambiar estado de tarea\n4. Salir");
+    while (ejecutando){
+        println(cout, "\n---- GESTOR DE TAREAS 3000 ----\n1. Agregar una tarea\n2. Listar tareas\n3. Cambiar estado de tarea\n4. Salir");
 
-        int opcion;
-        cin >> opcion;
+        int opcion = leerEntero();
 
         // Usamos un switch para ejecutar la opcion elegida por el usuario, llamando a la funcion correspondiente, y pasando la lista de tareas como parametro.
         switch (opcion){
@@ -118,11 +128,10 @@ int main(){
                 ejecutando = false;
                 break;
             default:
-                println("\nOpcion invalida, intente otra vez.");
+                println(cout, "\nOpcion invalida, intente otra vez.");
                 break;
         }
     }
-    while (ejecutando);
-    
+
     return 0;
 }
